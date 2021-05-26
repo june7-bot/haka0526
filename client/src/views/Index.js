@@ -34,14 +34,17 @@ function Index() {
 
   React.useEffect(() => {
     const token = Cookies.get("x_auth");
-    dispatch(authenticateUser(token)).then((res) => {
-      if (res.payload.authentication) {
-        setUserName(res.payload.info);
-        setIsLogin(true);
-      } else setIsLogin(false);
-      console.log(isLogin);
-    });
-
+    if (!token) {
+      setUserName("");
+      setIsLogin(false);
+    } else {
+      dispatch(authenticateUser(token)).then((res) => {
+        if (res.payload.authentication) {
+          setUserName(res.payload.info);
+          setIsLogin(true);
+        } else setIsLogin(false);
+      });
+    }
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
@@ -51,7 +54,7 @@ function Index() {
       document.body.classList.remove("index-page");
       document.body.classList.remove("sidebar-collapse");
     };
-  });
+  }, []);
   return (
     <>
       {isLogin ? (

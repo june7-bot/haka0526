@@ -159,7 +159,7 @@ function IndexNavbar() {
                   No Account?
                 </UncontrolledTooltip>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink
                   href="http://localhost:3000/profile-page"
                   id="QnA-tooltip"
@@ -170,7 +170,7 @@ function IndexNavbar() {
                 <UncontrolledTooltip target="#QnA-tooltip">
                   Do you have a Question?
                 </UncontrolledTooltip>
-              </NavItem>
+              </NavItem> */}
               {/* <NavItem>
                 <NavLink
                   href="https://www.facebook.com/hashshare.hss.3"

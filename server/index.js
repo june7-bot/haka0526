@@ -15,12 +15,13 @@ mongoose.connect("mongodb://localhost:27017/testDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-mongoose.set("useCreateIndex", true);
 
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
-
+  console.log(user);
   user.save((err, userInfo) => {
+    console.log("+=================================");
+    console.log(err);
     if (err) return res.json({ success: false, err });
     return res.status(200).json({
       success: true,
@@ -30,18 +31,25 @@ app.post("/api/users/register", (req, res) => {
 });
 
 app.post("/api/users/authentication", (req, res) => {
-  const isAuth = User.findByToken(req.cookies.x_auth);
-  console.log(isAuth);
-  if (!isAuth) {
-    res.send({ authentication: false });
-  } else {
-    User.findOne({ token: req.cookies.x_auth }, (err, user) => {
+  User.findOne({ token: req.cookies.x_auth }, (err, user) => {
+    if (err) res.send({ authentication: false });
+    else {
       res.send({
         authentication: true,
         info: user.name,
       });
-    });
-  }
+    }
+  });
+  // if (!isAuth) {
+  //   res.send({ authentication: false });
+  // } else {
+  //   User.findOne({ token: req.cookies.x_auth }, (err, user) => {
+  //     res.send({
+  //       authentication: true,
+  //       info: user.name,
+  //     });
+  //   });
+  // }
 });
 
 app.post("/api/users/login", (req, res) => {
