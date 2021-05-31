@@ -27,24 +27,31 @@ import Download from "./index-sections/Download.js";
 import axios from "axios";
 import { authenticateUser } from "../_actions/user_action";
 import Cookies from "js-cookie";
-function Index() {
+function Index(props) {
   const dispatch = useDispatch();
   const [isLogin, setIsLogin] = React.useState(false);
   const [userName, setUserName] = React.useState("");
 
   React.useEffect(() => {
-    const token = Cookies.get("x_auth");
-    if (!token) {
+    if (!props.location.state) {
       setUserName("");
       setIsLogin(false);
     } else {
-      dispatch(authenticateUser(token)).then((res) => {
-        if (res.payload.authentication) {
-          setUserName(res.payload.info);
-          setIsLogin(true);
-        } else setIsLogin(false);
-      });
+      setUserName(props.location.state);
+      setIsLogin(true);
     }
+    // const token = Cookies.get("x_auth");
+    // if (!token) {
+    //   setUserName("");
+    //   setIsLogin(false);
+    // } else {
+    //   dispatch(authenticateUser(token)).then((res) => {
+    //     if (res.payload.authentication) {
+    //       setUserName(res.payload.info);
+    //       setIsLogin(true);
+    //     } else setIsLogin(false);
+    //   });
+    // }
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");

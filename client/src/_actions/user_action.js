@@ -10,8 +10,6 @@ export function loginUser(dataToSubmit) {
   const request = axios
     .post("/api/users/login", dataToSubmit)
     .then((response) => {
-      console.log("======================================");
-      console.log(response);
       return response.data;
     });
 

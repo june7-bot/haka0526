@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Databse>
+  <z>
+    <email>z@naver.com</email>
+    <name>z</name>
+    <password>123456789</password>
+  </z>
+  <test>
+    <email>test@naver.com</email>
+    <name>test</name>
+    <password>25f9e794323b453885f5181f1b624d0b</password>
+  </test>
+</Databse>

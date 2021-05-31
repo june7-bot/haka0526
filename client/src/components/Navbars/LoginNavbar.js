@@ -97,7 +97,7 @@ function IndexNavbar(props) {
                 </NavLink>
               </NavItem>
 
-              <NavItem>
+              {/* <NavItem>
                 <NavLink
                   href="http://localhost:3000/profile-page"
                   id="QnA-tooltip"
@@ -105,7 +105,7 @@ function IndexNavbar(props) {
                   <i className="far fa-clipboard fa-2x mr-2 "></i>
                   <p className="d-lg-none d-xl-none">Board</p>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink
                   onClick={() => {

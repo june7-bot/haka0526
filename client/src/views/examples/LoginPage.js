@@ -39,17 +39,13 @@ function LoginPage(props) {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    console.log("Email", Email);
-    console.log("Password", Password);
-    console.log("props", props);
-
     let body = {
       email: Email,
       password: Password,
     };
     dispatch(loginUser(body)).then((response) => {
       if (response.payload.loginSuccess) {
-        props.history.push("/index");
+        props.history.push("/index", response.payload.user);
       } else {
         alert("Error˝");
       }

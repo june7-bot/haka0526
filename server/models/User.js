@@ -81,7 +81,6 @@ userSchema.statics.findByToken = function (token) {
     user.findOne({ token: token }, function (err, user) {
       if (err) isAuth = false;
       else {
-        console.log(user);
         x = user;
       }
     });
